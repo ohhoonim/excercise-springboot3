@@ -15,7 +15,7 @@ public class Product {
         this.unitType = unitType;
     }
 
-    public Product(String string, String string2, String string3, int price) {
+    public Product(String id, String name, String unitType, int price) {
         this.id = id;
         this.name = name;
         this.unitType = unitType;

@@ -4,10 +4,8 @@ import org.springframework.stereotype.Service;
 
 import dev.ohhoonim.jdbc_query_dsl.inventories.model.InventoriesStory;
 import dev.ohhoonim.jdbc_query_dsl.inventories.model.Product;
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class InventoriesAgent implements InventoriesStory {
     @Override
     public void addProductInfo(Product newProduct) {

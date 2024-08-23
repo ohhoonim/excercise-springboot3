@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.config;
+package dev.ohhoonim.jdbc_query_dsl.configuration;
 
 import javax.sql.DataSource;
 

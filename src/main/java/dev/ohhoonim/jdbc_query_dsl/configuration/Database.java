@@ -10,7 +10,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-public class DBConfig {
+public class Database {
     
     @Bean
     @ConfigurationProperties("spring.datasource.hikari")

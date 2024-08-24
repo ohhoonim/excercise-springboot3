@@ -1,23 +1,36 @@
 package dev.ohhoonim.jdbc_query_dsl.inventories.model;
 
-public interface InventoriesStory {
-    // 상품정보 생성
-    void addProductInfo(Product newProduct);
+import java.util.Optional;
 
-    // 상품정보 수정
-    void modifyProductInfo(String productId);
+import org.springframework.modulith.events.ApplicationModuleListener;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import dev.ohhoonim.jdbc_query_dsl.orderlines.OrderlinesPaymentEvent;
+import lombok.RequiredArgsConstructor;
+
+@Service("inventoriesStory")
+@RequiredArgsConstructor
+@Transactional
+public class InventoriesStory {
+
+    private final InventoriesCommand inventoriesCommand;
+    private final InventoriesQuery inventoriesQuery;
+
+    // 상품정보 생성
+    public void addProductInfo(Product newProduct) {
+        inventoriesCommand.addProductInfo(newProduct);
+    }
 
     // 상품정보 조회
-    Product getProductInfo(String productId);
+    public Optional<Product> getProductInfo(String productId) {
+        return inventoriesQuery.getProductInfo(productId);
+    }
 
-    // 상품 재고수량 수정
-    void modifyProductQty(Product product, int qty); 
-
-    // 상품 재고수량 조회
-    int getProductQty(String productId);
-
-    // 상품 보관 위치 목록
-
-    // 보관 위치별 상품 목록
-
+    @ApplicationModuleListener
+    void on(OrderlinesPaymentEvent event) throws Exception {
+        System.out.println("orderlines payment event -------------------");
+        System.out.println(event.toString());
+        System.out.println("orderlines payment event -------------------");
+    }
 }

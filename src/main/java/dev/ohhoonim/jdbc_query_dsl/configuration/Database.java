@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.config;
+package dev.ohhoonim.jdbc_query_dsl.configuration;
 
 import javax.sql.DataSource;
 
@@ -10,7 +10,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-public class DBConfig {
+public class Database {
     
     @Bean
     @ConfigurationProperties("spring.datasource.hikari")

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
-@EnableAsync(proxyTargetClass = true)
+@EnableAsync
 public class JdbcQueryDslApplication {
 
 	public static void main(String[] args) {

@@ -13,6 +13,7 @@ public class Product {
         this.id = id;
         this.name = name;
         this.unitType = unitType;
+        this.price = 0;
     }
 
     public Product(String id, String name, String unitType, int price) {
@@ -22,7 +23,4 @@ public class Product {
         this.price = price;
     }
 
-    public dev.ohhoonim.jdbc_query_dsl.inventories.repository.Product toProduct() {
-        return new dev.ohhoonim.jdbc_query_dsl.inventories.repository.Product(this.id, this.name, this.unitType, this.price); 
-    }
 }

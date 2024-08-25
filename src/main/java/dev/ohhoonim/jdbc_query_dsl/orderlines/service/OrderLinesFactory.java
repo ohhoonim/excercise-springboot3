@@ -21,13 +21,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OrderLinesFactory implements OrderLinesQuery, OrderLinesCommand {
 
-    private List<Order> orders = new ArrayList<>();
 
     private final OrderLineRepository orderLineRepository;
     
     @Override
     public void addOrder(Order order) {
-        this.orders.add(order);
         orderLineRepository.save(orderLineMapper.apply(order));
     }
 
@@ -40,52 +38,30 @@ public class OrderLinesFactory implements OrderLinesQuery, OrderLinesCommand {
                 order.getProductUnitType(),
                 order.getProductPrice(),
                 order.getQty()
-        ); }; 
+        ); };
+
+    @Override
+    public void init() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'init'");
+    }
 
     @Override
     public int getTotalPrice() {
-        return orders.stream().mapToInt(Order::getTotalPrice).sum();
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTotalPrice'");
     }
 
     @Override
     public Integer orderlineCount() {
-        var byProduct = orders.stream().collect(groupingBy(getProductInfo));
-        return byProduct.size();
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'orderlineCount'");
     }
 
     @Override
     public List<Order> getFinalOrderLine() {
-        var byProduct = orders.stream().collect(groupingBy(getProductInfo, Collectors.summingInt(Order::getQty)));
-
-        return byProduct.entrySet().stream().map(e -> {
-            var pInfo = e.getKey();
-            var qty = e.getValue();
-            return new Order(
-                    pInfo.orderId(),
-                    LocalDateTime.now(),
-                    pInfo.productId(),
-                    pInfo.productName(),
-                    pInfo.unitType(),
-                    pInfo.productPrice(),
-                    qty);
-        })
-                .toList();
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getFinalOrderLine'");
     }
 
-    private final Function<Order, ProductInfo> getProductInfo = (o) -> {
-        return new ProductInfo(o.getId(), o.getProductId(), o.getProductName(), o.getProductUnitType(), o.getProductPrice());
-    };
-
-    record ProductInfo(
-            int orderId,
-            String productId,
-            String productName,
-            String unitType,
-            int productPrice) {
-    }
-
-    @Override
-    public void init() {
-        orders.clear(); 
-    }
 }

@@ -5,14 +5,16 @@ import java.util.function.Function;
 
 import org.springframework.stereotype.Component;
 
-import dev.ohhoonim.jdbc_query_dsl.inventories.model.InventoriesCommand;
-import dev.ohhoonim.jdbc_query_dsl.inventories.model.InventoriesQuery;
 import dev.ohhoonim.jdbc_query_dsl.inventories.model.Product;
+import dev.ohhoonim.jdbc_query_dsl.inventories.model.port.InventoriesCommand;
+import dev.ohhoonim.jdbc_query_dsl.inventories.model.port.InventoriesQuery;
+import dev.ohhoonim.jdbc_query_dsl.repositories.ProductRepository;
+import dev.ohhoonim.jdbc_query_dsl.repositories.ProductTable;
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class InventoriesAdapter implements InventoriesQuery, InventoriesCommand {
+public class InventoriesFactory implements InventoriesQuery, InventoriesCommand {
 
     private final ProductRepository productRepository;
 
@@ -24,11 +26,14 @@ public class InventoriesAdapter implements InventoriesQuery, InventoriesCommand 
 
     @Override
     public Optional<Product> getProductInfo(String id) {
-        return productRepository.findById(id).stream().map(p -> p.toProduct()).findFirst();
+        return productRepository.findById(id).stream().map(productMapper).findFirst();
     }
-
 
     Function<Product, ProductTable> productTableMapper = p -> {
         return new ProductTable(p.getId(), p.getName(), p.getUnitType(), p.getPrice());
+    };
+
+    Function<ProductTable, Product> productMapper = p -> {
+        return new Product(p.id(), p.name(), p.unitType(), p.price());
     };
 }

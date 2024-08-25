@@ -6,13 +6,15 @@ import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import dev.ohhoonim.jdbc_query_dsl.inventories.model.port.InventoriesCommand;
+import dev.ohhoonim.jdbc_query_dsl.inventories.model.port.InventoriesQuery;
 import dev.ohhoonim.jdbc_query_dsl.orderlines.OrderlinesPaymentEvent;
 import lombok.RequiredArgsConstructor;
 
-@Service("inventoriesStory")
+@Service("inventoriesService")
 @RequiredArgsConstructor
 @Transactional
-public class InventoriesStory {
+public class InventoriesService {
 
     private final InventoriesCommand inventoriesCommand;
     private final InventoriesQuery inventoriesQuery;

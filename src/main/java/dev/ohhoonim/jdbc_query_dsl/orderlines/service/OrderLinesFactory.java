@@ -8,30 +8,42 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
-import dev.ohhoonim.jdbc_query_dsl.orderlines.OrderlinesPaymentEvent;
 import dev.ohhoonim.jdbc_query_dsl.orderlines.model.Order;
-import dev.ohhoonim.jdbc_query_dsl.orderlines.model.OrderLinesCommand;
-import dev.ohhoonim.jdbc_query_dsl.orderlines.model.OrderLinesQuery;
+import dev.ohhoonim.jdbc_query_dsl.orderlines.model.port.OrderLinesCommand;
+import dev.ohhoonim.jdbc_query_dsl.orderlines.model.port.OrderLinesQuery;
+import dev.ohhoonim.jdbc_query_dsl.repositories.OrderLineRepository;
+import dev.ohhoonim.jdbc_query_dsl.repositories.OrderLineTable;
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class OrderLinesAdapter implements OrderLinesQuery, OrderLinesCommand {
+public class OrderLinesFactory implements OrderLinesQuery, OrderLinesCommand {
 
     private List<Order> orders = new ArrayList<>();
+
+    private final OrderLineRepository orderLineRepository;
     
     @Override
-    public void add(Order order) {
+    public void addOrder(Order order) {
         this.orders.add(order);
+        orderLineRepository.save(orderLineMapper.apply(order));
     }
+
+    private Function<Order, OrderLineTable> orderLineMapper = order -> {
+        return new OrderLineTable(
+                order.getId(),
+                order.getOrderDate(),
+                order.getProductId(),
+                order.getProductName(),
+                order.getProductUnitType(),
+                order.getProductPrice(),
+                order.getQty()
+        ); }; 
 
     @Override
     public int getTotalPrice() {
-        
-
         return orders.stream().mapToInt(Order::getTotalPrice).sum();
     }
 
@@ -39,7 +51,6 @@ public class OrderLinesAdapter implements OrderLinesQuery, OrderLinesCommand {
     public Integer orderlineCount() {
         var byProduct = orders.stream().collect(groupingBy(getProductInfo));
         return byProduct.size();
-
     }
 
     @Override
@@ -50,6 +61,7 @@ public class OrderLinesAdapter implements OrderLinesQuery, OrderLinesCommand {
             var pInfo = e.getKey();
             var qty = e.getValue();
             return new Order(
+                    pInfo.orderId(),
                     LocalDateTime.now(),
                     pInfo.productId(),
                     pInfo.productName(),
@@ -61,10 +73,11 @@ public class OrderLinesAdapter implements OrderLinesQuery, OrderLinesCommand {
     }
 
     private final Function<Order, ProductInfo> getProductInfo = (o) -> {
-        return new ProductInfo(o.getProductId(), o.getProductName(), o.getUnitType(), o.getProductPrice());
+        return new ProductInfo(o.getId(), o.getProductId(), o.getProductName(), o.getProductUnitType(), o.getProductPrice());
     };
 
     record ProductInfo(
+            int orderId,
             String productId,
             String productName,
             String unitType,

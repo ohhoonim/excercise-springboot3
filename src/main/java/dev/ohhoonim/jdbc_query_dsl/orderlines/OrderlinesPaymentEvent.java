@@ -11,3 +11,4 @@ public record OrderlinesPaymentEvent(
         String productId) {
 
 }
+// inventories에서 판매된 수량만큼 재고 감소

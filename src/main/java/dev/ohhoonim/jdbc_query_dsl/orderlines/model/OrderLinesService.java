@@ -8,19 +8,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import dev.ohhoonim.jdbc_query_dsl.orderlines.OrderlinesPaymentEvent;
+import dev.ohhoonim.jdbc_query_dsl.orderlines.model.port.OrderLinesCommand;
+import dev.ohhoonim.jdbc_query_dsl.orderlines.model.port.OrderLinesQuery;
 import lombok.RequiredArgsConstructor;
 
-@Service("orderLinesStory")
+@Service("orderLinesService")
 @RequiredArgsConstructor
 @Transactional
-public class OrderLinesStory {
+public class OrderLinesService {
 
     private final OrderLinesCommand orderLinesCommand;
     private final OrderLinesQuery orderLinesQuery;
     private final ApplicationEventPublisher publisher;
 
-    public void add(Order order) {
-        orderLinesCommand.add(order);
+    public void addOrder(Order order) {
+        orderLinesCommand.addOrder(order);
     }
 
     public int getTotalPrice() {

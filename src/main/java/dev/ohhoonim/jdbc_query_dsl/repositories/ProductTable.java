@@ -1,10 +1,8 @@
-package dev.ohhoonim.jdbc_query_dsl.inventories.service;
+package dev.ohhoonim.jdbc_query_dsl.repositories;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
-
-import dev.ohhoonim.jdbc_query_dsl.inventories.model.Product;
 
 @Table("product")
 public record ProductTable (
@@ -13,8 +11,4 @@ public record ProductTable (
     @Column("unit_type") String unitType,
     Integer price
 ) {
-
-    public Product toProduct() {
-        return new Product(id, name, unitType, price);
-    }
 }

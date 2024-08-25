@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.ohhoonim.jdbc_query_dsl.orderlines.model.OrderLinesStory;
+import dev.ohhoonim.jdbc_query_dsl.orderlines.model.OrderLinesService;
 import lombok.RequiredArgsConstructor;
 
 
@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OrderApi {
 
-    private final OrderLinesStory orderLinesStory;
+    private final OrderLinesService orderLinesStory;
     
     @GetMapping("/test")
     public String orderlinesTest() {

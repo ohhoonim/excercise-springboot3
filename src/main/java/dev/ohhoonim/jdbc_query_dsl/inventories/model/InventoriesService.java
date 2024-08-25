@@ -10,10 +10,12 @@ import dev.ohhoonim.jdbc_query_dsl.inventories.model.port.InventoriesCommand;
 import dev.ohhoonim.jdbc_query_dsl.inventories.model.port.InventoriesQuery;
 import dev.ohhoonim.jdbc_query_dsl.orderlines.OrderlinesPaymentEvent;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service("inventoriesService")
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class InventoriesService {
 
     private final InventoriesCommand inventoriesCommand;
@@ -31,8 +33,6 @@ public class InventoriesService {
 
     @ApplicationModuleListener
     void on(OrderlinesPaymentEvent event) throws Exception {
-        System.out.println("orderlines payment event -------------------");
-        System.out.println(event.toString());
-        System.out.println("orderlines payment event -------------------");
+        log.debug(event.toString());
     }
 }

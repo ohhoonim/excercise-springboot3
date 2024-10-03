@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.repositories;
+package dev.ohhoonim.jdbc_query_dsl.table;
 
 import java.time.LocalDateTime;
 

@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import dev.ohhoonim.jdbc_query_dsl.inventories.model.Product;
 import dev.ohhoonim.jdbc_query_dsl.inventories.model.port.InventoriesCommand;
 import dev.ohhoonim.jdbc_query_dsl.inventories.model.port.InventoriesQuery;
-import dev.ohhoonim.jdbc_query_dsl.repositories.ProductRepository;
-import dev.ohhoonim.jdbc_query_dsl.repositories.ProductTable;
+import dev.ohhoonim.jdbc_query_dsl.repository.ProductRepository;
+import dev.ohhoonim.jdbc_query_dsl.table.ProductTable;
 import lombok.RequiredArgsConstructor;
 
 @Component

@@ -1,7 +1,5 @@
 package dev.ohhoonim.jdbc_query_dsl.inventories.model;
 
-import java.util.Optional;
-
 import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,8 +25,12 @@ public class InventoriesService {
     }
 
     // 상품정보 조회
-    public Optional<Product> getProductInfo(String productId) {
-        return inventoriesQuery.getProductInfo(productId);
+    public Product getProductInfo(String productId) throws NotFoundProductException {
+        var product = inventoriesQuery.getProductInfo(productId);
+        if (product.isEmpty()) {
+            throw new NotFoundProductException(productId);
+        }
+        return product.get();
     }
 
     @ApplicationModuleListener

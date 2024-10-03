@@ -1,8 +1,10 @@
 package dev.ohhoonim.jdbc_query_dsl.inventories.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class Product {
     private String id;
     private String name;

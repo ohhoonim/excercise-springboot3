@@ -1,5 +1,8 @@
 package dev.ohhoonim.jdbc_query_dsl.inventories.service;
 
+import java.util.Optional;
+
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,9 +19,10 @@ import lombok.RequiredArgsConstructor;
 public class ProductApi {
 
     private final InventoriesService inventoriesService;
-    
+
+
     @GetMapping("/{id}")
     public ResponseEntity<Product> product(@PathVariable String id) {
-        return ResponseEntity.ok(inventoriesService.getProductInfo(id).get());
+        return ResponseEntity.ok(inventoriesService.getProductInfo(id));
     }
 }

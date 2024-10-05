@@ -1,12 +1,12 @@
-package dev.ohhoonim.jdbc_query_dsl.inventories.model;
+package dev.ohhoonim.jdbc_query_dsl.domain.inventories.model;
 
 import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import dev.ohhoonim.jdbc_query_dsl.inventories.model.port.InventoriesCommand;
-import dev.ohhoonim.jdbc_query_dsl.inventories.model.port.InventoriesQuery;
-import dev.ohhoonim.jdbc_query_dsl.orderlines.OrderlinesPaymentEvent;
+import dev.ohhoonim.jdbc_query_dsl.domain.inventories.model.port.InventoriesCommand;
+import dev.ohhoonim.jdbc_query_dsl.domain.inventories.model.port.InventoriesQuery;
+import dev.ohhoonim.jdbc_query_dsl.domain.orderlines.OrderlinesPaymentEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,6 +35,6 @@ public class InventoriesService {
 
     @ApplicationModuleListener
     void on(OrderlinesPaymentEvent event) throws Exception {
-        log.debug(event.toString());
+        log.info("========== {}", event.toString());
     }
 }

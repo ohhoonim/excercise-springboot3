@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.orderlines.messaging;
+package dev.ohhoonim.jdbc_query_dsl.domain.orderlines.messaging;
 
 
 import org.springframework.amqp.core.Binding;

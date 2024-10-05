@@ -10,9 +10,6 @@ class JdbcQueryDslApplicationTests {
 	@Test
 	void contextLoads() {
 		var modules = ApplicationModules.of(JdbcQueryDslApplication.class);
-		for (var m : modules) {
-			System.out.println(m.getName() + " : " + m.getBasePackage());
-		}
 		modules.verify();
 	}
 

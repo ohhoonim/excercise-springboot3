@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.orderlines.model;
+package dev.ohhoonim.jdbc_query_dsl.domain.orderlines.model;
 
 import java.util.List;
 

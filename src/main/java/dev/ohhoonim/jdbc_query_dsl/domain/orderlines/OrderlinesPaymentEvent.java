@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.orderlines;
+package dev.ohhoonim.jdbc_query_dsl.domain.orderlines;
 
 import java.time.LocalDateTime;
 

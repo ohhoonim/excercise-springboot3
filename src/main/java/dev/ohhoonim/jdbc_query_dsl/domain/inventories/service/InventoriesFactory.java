@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.inventories.service;
+package dev.ohhoonim.jdbc_query_dsl.domain.inventories.service;
 
 import java.util.Optional;
 import java.util.function.Function;
@@ -6,9 +6,9 @@ import java.util.function.Function;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
-import dev.ohhoonim.jdbc_query_dsl.inventories.model.Product;
-import dev.ohhoonim.jdbc_query_dsl.inventories.model.port.InventoriesCommand;
-import dev.ohhoonim.jdbc_query_dsl.inventories.model.port.InventoriesQuery;
+import dev.ohhoonim.jdbc_query_dsl.domain.inventories.model.Product;
+import dev.ohhoonim.jdbc_query_dsl.domain.inventories.model.port.InventoriesCommand;
+import dev.ohhoonim.jdbc_query_dsl.domain.inventories.model.port.InventoriesQuery;
 import dev.ohhoonim.jdbc_query_dsl.repository.ProductRepository;
 import dev.ohhoonim.jdbc_query_dsl.table.ProductTable;
 import lombok.RequiredArgsConstructor;

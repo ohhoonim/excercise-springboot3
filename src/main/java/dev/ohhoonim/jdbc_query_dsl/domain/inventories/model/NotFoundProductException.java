@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.inventories.model;
+package dev.ohhoonim.jdbc_query_dsl.domain.inventories.model;
 
 public class NotFoundProductException extends RuntimeException{
     public NotFoundProductException(String id) {

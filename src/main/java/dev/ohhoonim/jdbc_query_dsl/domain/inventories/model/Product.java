@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.inventories.model;
+package dev.ohhoonim.jdbc_query_dsl.domain.inventories.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

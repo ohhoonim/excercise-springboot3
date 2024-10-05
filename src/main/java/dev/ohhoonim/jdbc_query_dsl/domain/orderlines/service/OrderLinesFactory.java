@@ -1,13 +1,13 @@
-package dev.ohhoonim.jdbc_query_dsl.orderlines.service;
+package dev.ohhoonim.jdbc_query_dsl.domain.orderlines.service;
 
 import java.util.List;
 import java.util.function.Function;
 
 import org.springframework.stereotype.Component;
 
-import dev.ohhoonim.jdbc_query_dsl.orderlines.model.Order;
-import dev.ohhoonim.jdbc_query_dsl.orderlines.model.port.OrderLinesCommand;
-import dev.ohhoonim.jdbc_query_dsl.orderlines.model.port.OrderLinesQuery;
+import dev.ohhoonim.jdbc_query_dsl.domain.orderlines.model.Order;
+import dev.ohhoonim.jdbc_query_dsl.domain.orderlines.model.port.OrderLinesCommand;
+import dev.ohhoonim.jdbc_query_dsl.domain.orderlines.model.port.OrderLinesQuery;
 import dev.ohhoonim.jdbc_query_dsl.repository.OrderLineRepository;
 import dev.ohhoonim.jdbc_query_dsl.table.OrderLineTable;
 import lombok.RequiredArgsConstructor;

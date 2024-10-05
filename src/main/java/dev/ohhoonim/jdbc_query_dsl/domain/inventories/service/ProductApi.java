@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.inventories.service;
+package dev.ohhoonim.jdbc_query_dsl.domain.inventories.service;
 
 import java.util.Optional;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.ohhoonim.jdbc_query_dsl.inventories.model.InventoriesService;
-import dev.ohhoonim.jdbc_query_dsl.inventories.model.Product;
+import dev.ohhoonim.jdbc_query_dsl.domain.inventories.model.InventoriesService;
+import dev.ohhoonim.jdbc_query_dsl.domain.inventories.model.Product;
 import lombok.RequiredArgsConstructor;
 
 @RestController

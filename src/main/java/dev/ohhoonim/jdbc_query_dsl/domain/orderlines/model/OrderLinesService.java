@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.orderlines.model;
+package dev.ohhoonim.jdbc_query_dsl.domain.orderlines.model;
 
 import java.time.LocalDateTime;
 
@@ -6,8 +6,8 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import dev.ohhoonim.jdbc_query_dsl.orderlines.OrderlinesPaymentEvent;
-import dev.ohhoonim.jdbc_query_dsl.orderlines.model.port.OrderLinesCommand;
+import dev.ohhoonim.jdbc_query_dsl.domain.orderlines.OrderlinesPaymentEvent;
+import dev.ohhoonim.jdbc_query_dsl.domain.orderlines.model.port.OrderLinesCommand;
 import lombok.RequiredArgsConstructor;
 
 @Service("orderLinesService")

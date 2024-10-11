@@ -2,16 +2,18 @@ services:
   postgres:
     image: 'postgres:15.7'
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      POSTGRES_DB: mydatabase
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: myuser
     ports:
       - '15432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
   rabbitmq:
     image: 'rabbitmq:3.12.6-management'
     environment:
-      - 'RABBITMQ_DEFAULT_PASS=secret'
-      - 'RABBITMQ_DEFAULT_USER=myuser'
+      RABBITMQ_DEFAULT_PASS: secret
+      RABBITMQ_DEFAULT_USER: myuser
     ports:
       - '5672:5672'
       - '15672:15672'
@@ -19,3 +21,21 @@ services:
     image: 'redis:7.2.1-alpine'
     ports:
       - '6379:6379'
+  keycloak:
+    image: 'keycloak/keycloak:26.0'
+    command: 'start-dev'
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres/mydatabase
+      KC_DB_USERNAME: myuser
+      KC_DB_PASSWORD: secret
+    ports:
+      - '8080:8080'
+    depends_on:
+      - 'postgres'
+
+volumes:
+  postgres_data:
+    driver: local

@@ -1,4 +1,4 @@
-GET http://localhost:8080/products/2 HTTP/1.1
+GET http://localhost:9090/products/2 HTTP/1.1
 content-type: application/json
 
 {
@@ -6,4 +6,4 @@ content-type: application/json
     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
 }
 ###
-GET http://localhost:8080/orderlines/test HTTP/1.1
+GET http://localhost:9090/orderlines/test HTTP/1.1

@@ -21,20 +21,20 @@ services:
     image: 'redis:7.2.1-alpine'
     ports:
       - '6379:6379'
-  keycloak:
-    image: 'keycloak/keycloak:26.0'
-    command: 'start-dev'
-    environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
-      KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://postgres/mydatabase
-      KC_DB_USERNAME: myuser
-      KC_DB_PASSWORD: secret
-    ports:
-      - '8080:8080'
-    depends_on:
-      - 'postgres'
+  # keycloak:
+  #   image: 'keycloak/keycloak:26.0'
+  #   command: 'start-dev'
+  #   environment:
+  #     KEYCLOAK_ADMIN: admin
+  #     KEYCLOAK_ADMIN_PASSWORD: admin
+  #     KC_DB: postgres
+  #     KC_DB_URL: jdbc:postgresql://postgres/mydatabase
+  #     KC_DB_USERNAME: myuser
+  #     KC_DB_PASSWORD: secret
+  #   ports:
+  #     - '8080:8080'
+  #   depends_on:
+  #     - 'postgres'
 
 volumes:
   postgres_data:

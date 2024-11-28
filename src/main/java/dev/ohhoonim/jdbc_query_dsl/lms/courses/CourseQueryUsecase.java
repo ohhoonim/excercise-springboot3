@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.domain.courses;
+package dev.ohhoonim.jdbc_query_dsl.lms.courses;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,5 +15,5 @@ public interface CourseQueryUsecase {
 
     public Optional<ClassManager> manager(Course.Round.Query courseRound); 
 
-    public List<ChangedHistory.Course> changedHistory(Course.Round.Query courseRound) ;
+    public List<ChangedHistory.Query> changedHistory(Course.Round.Query courseRound) ;
 }

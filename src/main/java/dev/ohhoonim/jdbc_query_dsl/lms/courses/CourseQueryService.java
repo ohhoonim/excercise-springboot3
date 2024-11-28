@@ -1,15 +1,15 @@
-package dev.ohhoonim.jdbc_query_dsl.domain.courses;
+package dev.ohhoonim.jdbc_query_dsl.lms.courses;
 
 import java.util.List;
 import java.util.Optional;
 
-import dev.ohhoonim.jdbc_query_dsl.component.Usecase;
 import dev.ohhoonim.jdbc_query_dsl.component.changedHistory.ChangedHistory;
 import dev.ohhoonim.jdbc_query_dsl.component.changedHistory.ChangedHistoryRepository;
 import dev.ohhoonim.jdbc_query_dsl.component.user.User;
 import dev.ohhoonim.jdbc_query_dsl.component.user.User.ClassManager;
+import dev.ohhoonim.jdbc_query_dsl.configuration.Usecase;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.Course.Round.Query;
 import dev.ohhoonim.jdbc_query_dsl.component.user.UserRepository;
-import dev.ohhoonim.jdbc_query_dsl.domain.courses.Course.Round.Query;
 import lombok.RequiredArgsConstructor;
 
 @Usecase
@@ -42,9 +42,9 @@ public class CourseQueryService implements CourseQueryUsecase {
     }
 
     @Override
-    public List<ChangedHistory.Course> changedHistory(Query courseRound) {
+    public List<ChangedHistory.Query> changedHistory(Query courseRound) {
         var condition = new ChangedHistory
-                .Condition(ChangedHistory.CourseClassify, courseRound.courseRoundId());
+                .Condition(ChangedHistory.Classify.COURSE, courseRound.courseRoundId());
 
         return changedHistoryRepository.histories(condition);
     }

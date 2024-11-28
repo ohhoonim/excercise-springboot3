@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.domain.courses;
+package dev.ohhoonim.jdbc_query_dsl.lms.courses;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -33,7 +33,7 @@ public sealed interface Course {
                 LocalDate end,
                 Set<Target> targets,
                 Boolean isReservable,
-                ChangedHistory.Course historyInfo) implements Round {
+                ChangedHistory.Query historyInfo) implements Round {
             public Query {
                 if (isReservable == null) {
                     isReservable = false;

@@ -19,13 +19,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import dev.ohhoonim.jdbc_query_dsl.component.changedHistory.ChangedHistory;
 import dev.ohhoonim.jdbc_query_dsl.component.changedHistory.ChangedHistoryRepository;
+import dev.ohhoonim.jdbc_query_dsl.component.changedHistory.ChangedHistory.Classify;
 import dev.ohhoonim.jdbc_query_dsl.component.user.User;
 import dev.ohhoonim.jdbc_query_dsl.component.user.User.ClassManager;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.Course;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.CourseQueryService;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.CourseRepository;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.Subject;
 import dev.ohhoonim.jdbc_query_dsl.component.user.UserRepository;
-import dev.ohhoonim.jdbc_query_dsl.domain.courses.Course;
-import dev.ohhoonim.jdbc_query_dsl.domain.courses.CourseQueryService;
-import dev.ohhoonim.jdbc_query_dsl.domain.courses.CourseRepository;
-import dev.ohhoonim.jdbc_query_dsl.domain.courses.Subject;
 
 @ExtendWith(MockitoExtension.class)
 public class CoursesModelQueryTest {
@@ -41,7 +42,6 @@ public class CoursesModelQueryTest {
 
     @Mock
     ChangedHistoryRepository changedHistoryRepository;
-
 
     @Test
     @DisplayName("1 학습과정 목록 조회")
@@ -90,12 +90,12 @@ public class CoursesModelQueryTest {
 
         // when
         var results = List.of(
-                new ChangedHistory.Course("course", null, null, null, null, null),
-                new ChangedHistory.Course("course", null, null, null, null, null));
+                new ChangedHistory.Query(Classify.COURSE, null, null, null, null, null),
+                new ChangedHistory.Query(Classify.COURSE, null, null, null, null, null));
         when(changedHistoryRepository.histories(any())).thenReturn(results);
 
         // then
-        List<ChangedHistory.Course> history = course.changedHistory(courseRound);
+        List<ChangedHistory.Query> history = course.changedHistory(courseRound);
 
         assertThat(history.size()).isEqualTo(2);
     }
@@ -125,6 +125,15 @@ public class CoursesModelQueryTest {
         verify(courseRepository, times(1)).subjectsByCourseRound(any());
         assertThat(resultSubjects.size()).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("2.1 대표교수 조회")
+    public void professor() {
+        // 대표교수는 과목별 임
+       // 과목조회 -> 대표교수 정보 가져오기 
+       // 과목에서 처리해야함 
+    }
+
     public void courseUsecaseDefineQuery() {
         // 1 학습과정 목록 조회
         courses();
@@ -134,8 +143,8 @@ public class CoursesModelQueryTest {
         changedHistory();
         // 2 과정 선택 후 과목 조회
         subjects();
-
         // 2.1 대표교수 조회
+        professor();
 
         // 2.2 강의계획서 조회
 

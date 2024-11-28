@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.domain.courses;
+package dev.ohhoonim.jdbc_query_dsl.lms.courses;
 
 public class CourseNotFound extends RuntimeException {
     public CourseNotFound(String message) {

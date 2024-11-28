@@ -1,4 +1,3 @@
-@org.springframework.modulith.ApplicationModule(type=org.springframework.modulith.ApplicationModule.Type.OPEN)
 package dev.ohhoonim.jdbc_query_dsl.component;
 
 /**

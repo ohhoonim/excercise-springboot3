@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.domain.courses;
+package dev.ohhoonim.jdbc_query_dsl.lms.courses;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,8 +7,8 @@ import java.util.UUID;
 import org.springframework.data.repository.Repository;
 
 import dev.ohhoonim.jdbc_query_dsl.component.user.User.ClassManager;
-import dev.ohhoonim.jdbc_query_dsl.domain.courses.Course.Condition;
-import dev.ohhoonim.jdbc_query_dsl.domain.courses.Course.Round;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.Course.Condition;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.Course.Round;
 
 public interface CourseRepository extends Repository <Course.Round, UUID>{
 

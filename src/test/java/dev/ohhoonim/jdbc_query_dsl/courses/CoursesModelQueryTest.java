@@ -26,13 +26,10 @@ import dev.ohhoonim.jdbc_query_dsl.component.user.UserRepository;
 import dev.ohhoonim.jdbc_query_dsl.lms.courses.Course;
 import dev.ohhoonim.jdbc_query_dsl.lms.courses.Lecture;
 import dev.ohhoonim.jdbc_query_dsl.lms.courses.Subject;
-import dev.ohhoonim.jdbc_query_dsl.lms.courses.Syllabus;
 import dev.ohhoonim.jdbc_query_dsl.lms.courses.service.model.CourseQueryRepository;
 import dev.ohhoonim.jdbc_query_dsl.lms.courses.service.model.CourseQueryService;
 import dev.ohhoonim.jdbc_query_dsl.lms.courses.service.model.SubjectQueryRepository;
-import dev.ohhoonim.jdbc_query_dsl.lms.courses.service.model.SubjectQueryService;
 import dev.ohhoonim.jdbc_query_dsl.lms.courses.service.model.SyllabusQueryRepository;
-import dev.ohhoonim.jdbc_query_dsl.lms.courses.service.model.SyllabusQueryService;
 
 @ExtendWith(MockitoExtension.class)
 public class CoursesModelQueryTest {
@@ -49,14 +46,9 @@ public class CoursesModelQueryTest {
     @Mock
     ChangedHistoryRepository changedHistoryRepository;
 
-    @InjectMocks
-    SubjectQueryService subject;
 
     @Mock
     SubjectQueryRepository subjectRepository;
-
-    @InjectMocks
-    SyllabusQueryService syllabus;
 
     @Mock
     SyllabusQueryRepository syllabusRepository;
@@ -165,7 +157,7 @@ public class CoursesModelQueryTest {
         when(userRepository.findUser(any(), any())).thenReturn(Optional.of(professor));
 
         // then
-        Optional<User.Professor> professorInfo = subject.professor(math);
+        Optional<User.Professor> professorInfo = course.professor(math);
         assertThat(professorInfo.isPresent()).isTrue();
         assertThat(professorInfo.get().name()).isEqualTo("ohhoonim");
     }
@@ -183,7 +175,7 @@ public class CoursesModelQueryTest {
         );
         when(syllabusRepository.lecturesBySubject(any())).thenReturn(resultLectures);
 
-        List<Lecture> lectures = subject.lectures(new Subject.Condition(subjectId));
+        List<Lecture> lectures = course.lectures(new Subject.Condition(subjectId));
         assertThat(lectures.size()).isEqualTo(2);
     }
 
@@ -197,7 +189,7 @@ public class CoursesModelQueryTest {
         // when
         when(syllabusRepository.findLecture(any())).thenReturn(lectureParam);
         // then 
-        Optional<Lecture> resultLecture = syllabus.findLecture(new Lecture.Condition(null, lectureId));
+        Optional<Lecture> resultLecture = course.findLecture(new Lecture.Condition(null, lectureId));
 
         assertThat(resultLecture.get().lectureId()).isEqualTo(lectureParam.get().lectureId());
     }

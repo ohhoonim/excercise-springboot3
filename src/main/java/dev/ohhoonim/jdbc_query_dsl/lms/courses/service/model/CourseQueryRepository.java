@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.lms.courses;
+package dev.ohhoonim.jdbc_query_dsl.lms.courses.service.model;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,10 +7,12 @@ import java.util.UUID;
 import org.springframework.data.repository.Repository;
 
 import dev.ohhoonim.jdbc_query_dsl.component.user.User.ClassManager;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.Course;
 import dev.ohhoonim.jdbc_query_dsl.lms.courses.Course.Condition;
 import dev.ohhoonim.jdbc_query_dsl.lms.courses.Course.Round;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.Subject;
 
-public interface CourseRepository extends Repository <Course.Round, UUID>{
+public interface CourseQueryRepository extends Repository <Course.Round, UUID>{
 
     List<Subject.ByCourse> subjectsByCourseRound(Course.Round courseRound);
 

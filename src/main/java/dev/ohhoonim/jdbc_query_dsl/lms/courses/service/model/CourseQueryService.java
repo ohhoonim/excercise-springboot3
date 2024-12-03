@@ -1,4 +1,4 @@
-package dev.ohhoonim.jdbc_query_dsl.lms.courses;
+package dev.ohhoonim.jdbc_query_dsl.lms.courses.service.model;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,16 +7,19 @@ import dev.ohhoonim.jdbc_query_dsl.component.changedHistory.ChangedHistory;
 import dev.ohhoonim.jdbc_query_dsl.component.changedHistory.ChangedHistoryRepository;
 import dev.ohhoonim.jdbc_query_dsl.component.user.User;
 import dev.ohhoonim.jdbc_query_dsl.component.user.User.ClassManager;
-import dev.ohhoonim.jdbc_query_dsl.configuration.Usecase;
-import dev.ohhoonim.jdbc_query_dsl.lms.courses.Course.Round.Query;
 import dev.ohhoonim.jdbc_query_dsl.component.user.UserRepository;
+import dev.ohhoonim.jdbc_query_dsl.configuration.Usecase;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.Course;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.Course.Round.Query;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.CourseNotFound;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.Subject;
 import lombok.RequiredArgsConstructor;
 
 @Usecase
 @RequiredArgsConstructor
 public class CourseQueryService implements CourseQueryUsecase {
 
-    private final CourseRepository courseRepository;
+    private final CourseQueryRepository courseRepository;
     private final UserRepository userRepository;
     private final ChangedHistoryRepository changedHistoryRepository;
 

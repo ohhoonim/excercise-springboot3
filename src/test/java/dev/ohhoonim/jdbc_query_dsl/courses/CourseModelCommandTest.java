@@ -3,8 +3,8 @@ package dev.ohhoonim.jdbc_query_dsl.courses;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-import dev.ohhoonim.jdbc_query_dsl.lms.courses.CourseQueryUsecase;
-import dev.ohhoonim.jdbc_query_dsl.lms.courses.CourseRepository;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.service.model.CourseQueryRepository;
+import dev.ohhoonim.jdbc_query_dsl.lms.courses.service.model.CourseQueryUsecase;
 
 public class CourseModelCommandTest {
 
@@ -12,7 +12,7 @@ public class CourseModelCommandTest {
     CourseQueryUsecase course;
 
     @Mock
-    CourseRepository repository;
+    CourseQueryRepository repository;
 
     public void courseUsecaseDefineCommand() {
         // 신규설계

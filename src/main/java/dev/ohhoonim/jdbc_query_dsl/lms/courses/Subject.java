@@ -12,4 +12,15 @@ public sealed interface Subject {
     ) implements Subject {
 
     }
+    public record Condition (
+        UUID subjectId
+    ) implements Subject {
+    }
+
+    public record Query (
+        UUID subjectId,
+        String subjectTitle,
+        UUID professorId 
+    ) implements Subject {}
+
 }

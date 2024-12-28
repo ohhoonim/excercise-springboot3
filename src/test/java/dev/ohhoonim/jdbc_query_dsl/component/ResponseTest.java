@@ -11,8 +11,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 import dev.ohhoonim.jdbc_query_dsl.component.response.DefaultResponseApi;
 
-@ComponentScan(basePackages = { "dev.ohhoonim.jdbc_query_dsl.component.response",
-        "dev.ohhoonim.jdbc_query_dsl.configuration"})
+@ComponentScan(basePackages = { "dev.ohhoonim.jdbc_query_dsl.component.response"})
 @WebMvcTest(controllers = { DefaultResponseApi.class })
 public class ResponseTest {
 

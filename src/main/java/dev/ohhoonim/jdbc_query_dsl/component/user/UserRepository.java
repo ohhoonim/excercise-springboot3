@@ -3,10 +3,20 @@ package dev.ohhoonim.jdbc_query_dsl.component.user;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.springframework.data.repository.Repository;
+import org.springframework.jdbc.core.simple.JdbcClient;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends Repository<User, UUID> {
+@Repository
+public class UserRepository {
 
-    <T> Optional<T> findUser(UUID classManagerId, Class<T> userType);
-    
+    private final JdbcClient client;
+
+    public UserRepository(JdbcClient client) {
+        this.client = client;
+    }
+
+    public <T extends User> Optional<T> findByUserId(UUID userId, Class<T> clazz) {
+        return null;
+    };
+
 }

@@ -1,2 +1,2 @@
-@org.springframework.modulith.NamedInterface("changed-history")
+@org.springframework.modulith.NamedInterface("changedHistory")
 package dev.ohhoonim.jdbc_query_dsl.component.changedHistory;

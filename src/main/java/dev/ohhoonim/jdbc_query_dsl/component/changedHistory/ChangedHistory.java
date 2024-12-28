@@ -1,9 +1,11 @@
 package dev.ohhoonim.jdbc_query_dsl.component.changedHistory;
 
-import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
-import dev.ohhoonim.jdbc_query_dsl.component.user.User;
+import org.springframework.data.annotation.Id;
+
+import dev.ohhoonim.jdbc_query_dsl.component.dataBy.DataBy;
 
 public sealed interface ChangedHistory {
 
@@ -11,23 +13,29 @@ public sealed interface ChangedHistory {
         COURSE
     }
 
-    public record Condition(
+    public record Entity(
+            @Id UUID recordId,
             Classify classify,
-            UUID recordId) implements ChangedHistory {
-    }
-
-    public record Query(
-            Classify classify,
-            UUID recordId,
+            UUID referenceId,
             String oldContents,
             String newContents,
-            LocalDate createDate,
-            User.Writer changeUser) implements ChangedHistory {
+            DataBy dataBy) implements ChangedHistory {
+        public interface Service {
+
+            public List<Entity> histories(SearchCondition condition);
+
+            public void addHistory(Entity changedHistory);
+        }
     }
 
-    public record Command(
+    public record SearchCondition(
             Classify classify,
-            UUID recordId) implements ChangedHistory {
+            UUID referenceId) implements ChangedHistory {
+        public SearchCondition {
+            if (classify == null || referenceId == null) {
+                throw new RequiredPropertyException("classify와 reference는 필수 값입니다.");
+            }
+        }
     }
 
 }

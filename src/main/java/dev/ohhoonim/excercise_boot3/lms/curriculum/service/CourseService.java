@@ -1,14 +1,16 @@
-package dev.ohhoonim.excercise_boot3.lms.curriculum;
+package dev.ohhoonim.excercise_boot3.lms.curriculum.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import dev.ohhoonim.excercise_boot3.lms.curriculum.ModelCurriculum.Course;
-import dev.ohhoonim.excercise_boot3.lms.curriculum.ModelCurriculum.CourseCondition;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum.Course;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum.CourseCondition;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum.Course.Usecase;
 
 @Service
-public final class CourseService implements ModelCurriculum.Course.Usecase {
+public final class CourseService implements Curriculum.Course.Usecase {
 
     @Override
     public Boolean isClosed(Course course) {

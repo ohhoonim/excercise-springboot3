@@ -1,4 +1,4 @@
-package dev.ohhoonim.excercise_boot3.lms.curriculum;
+package dev.ohhoonim.excercise_boot3.lms.curriculum.service;
 
 import java.util.List;
 import java.util.Set;
@@ -6,11 +6,13 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import dev.ohhoonim.excercise_boot3.lms.curriculum.ModelCurriculum.Lecture;
-import dev.ohhoonim.excercise_boot3.lms.curriculum.ModelCurriculum.Syllabus;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum.Lecture;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum.Syllabus;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum.Syllabus.Usecase;
 
 @Service
-public final class SyllabusService implements ModelCurriculum.Syllabus.Usecase {
+public final class SyllabusService implements Curriculum.Syllabus.Usecase {
 
     @Override
     public Syllabus save(Syllabus syllabus) {

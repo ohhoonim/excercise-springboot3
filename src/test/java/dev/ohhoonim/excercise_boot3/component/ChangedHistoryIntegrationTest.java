@@ -1,4 +1,4 @@
-package dev.ohhoonim.excercise_boot3.component.changedHistory;
+package dev.ohhoonim.excercise_boot3.component;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,6 +15,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import dev.ohhoonim.excercise_boot3.component.changedHistory.ChangedHistoryService;
 import dev.ohhoonim.excercise_boot3.component.changedHistory.ChangedHistory.Classify;
 import dev.ohhoonim.excercise_boot3.component.changedHistory.ChangedHistory.SearchCondition;
 import dev.ohhoonim.excercise_boot3.component.dataBy.DataBy;

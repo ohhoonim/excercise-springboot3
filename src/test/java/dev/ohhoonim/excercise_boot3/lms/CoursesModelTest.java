@@ -1,4 +1,4 @@
-package dev.ohhoonim.excercise_boot3.courses;
+package dev.ohhoonim.excercise_boot3.lms;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

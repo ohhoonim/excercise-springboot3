@@ -1,4 +1,4 @@
-package dev.ohhoonim.excercise_boot3.lms.curriculum;
+package dev.ohhoonim.excercise_boot3.lms.curriculum.service;
 
 import java.util.UUID;
 
@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 import dev.ohhoonim.excercise_boot3.component.user.User.Assistant;
 import dev.ohhoonim.excercise_boot3.component.user.User.ClassManager;
 import dev.ohhoonim.excercise_boot3.component.user.User.Professor;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum.CommonUsecase;
 
 @Service
-public final class CommonService implements ModelCurriculum.CommonUsecase {
+public final class CommonService implements Curriculum.CommonUsecase {
 
     @Override
     public ClassManager manager(UUID userId) {

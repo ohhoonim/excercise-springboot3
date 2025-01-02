@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 
 import dev.ohhoonim.excercise_boot3.component.user.User;
 
-public sealed interface ModelCurriculum {
+public sealed interface Curriculum {
 
     public record Course(
             @Id UUID courseId,
@@ -20,7 +20,7 @@ public sealed interface ModelCurriculum {
             UUID classManagerId,
             LocalDate startDate,
             LocalDate endDate,
-            Boolean closed) implements ModelCurriculum {
+            Boolean closed) implements Curriculum {
 
         public interface Usecase {
 
@@ -36,7 +36,7 @@ public sealed interface ModelCurriculum {
 
     public record CourseSubject(
             @Id UUID courseId,
-            @Id UUID subjectSyllabusId) implements ModelCurriculum {
+            @Id UUID subjectSyllabusId) implements Curriculum {
 
         public interface Usecase {
 
@@ -53,7 +53,7 @@ public sealed interface ModelCurriculum {
     public record Subject(
             @Id UUID subjectId,
             String title,
-            String category) implements ModelCurriculum {
+            String category) implements Curriculum {
 
         public interface Usecase {
 
@@ -67,7 +67,7 @@ public sealed interface ModelCurriculum {
     public record SubjectSyllabus(
             @Id UUID subjectSyllabusId,
             UUID subjectId,
-            UUID syllabusId) implements ModelCurriculum {
+            UUID syllabusId) implements Curriculum {
         public interface Usecase {
 
             public List<Syllabus> syllabues(UUID subjectId);
@@ -83,7 +83,7 @@ public sealed interface ModelCurriculum {
             String title,
             Integer timeOfHour,
             String timeUnit,
-            UUID professorId) implements ModelCurriculum {
+            UUID professorId) implements Curriculum {
 
         public interface Usecase {
 
@@ -109,7 +109,7 @@ public sealed interface ModelCurriculum {
             String content,
             Boolean isCompleted,
             UUID professorId,
-            UUID assistantId) implements ModelCurriculum {
+            UUID assistantId) implements Curriculum {
 
         public interface Usecase {
 
@@ -118,7 +118,7 @@ public sealed interface ModelCurriculum {
         }
     }
 
-    public sealed interface CommonUsecase permits CommonService {
+    public interface CommonUsecase  {
 
         public User.ClassManager manager(UUID userId);
 

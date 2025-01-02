@@ -1,16 +1,18 @@
-package dev.ohhoonim.excercise_boot3.lms.curriculum;
+package dev.ohhoonim.excercise_boot3.lms.curriculum.service;
 
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import dev.ohhoonim.excercise_boot3.lms.curriculum.ModelCurriculum.Course;
-import dev.ohhoonim.excercise_boot3.lms.curriculum.ModelCurriculum.CourseSubject;
-import dev.ohhoonim.excercise_boot3.lms.curriculum.ModelCurriculum.Subject;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum.Course;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum.CourseSubject;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum.Subject;
+import dev.ohhoonim.excercise_boot3.lms.curriculum.Curriculum.CourseSubject.Usecase;
 
 @Service
-public final class CourseSubjectService implements ModelCurriculum.CourseSubject.Usecase {
+public final class CourseSubjectService implements Curriculum.CourseSubject.Usecase {
 
     @Override
     public List<Subject> addSubject(CourseSubject courseSubject) {

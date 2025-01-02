@@ -1,4 +1,4 @@
-package dev.ohhoonim.excercise_boot3.courses;
+package dev.ohhoonim.excercise_boot3.lms;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 

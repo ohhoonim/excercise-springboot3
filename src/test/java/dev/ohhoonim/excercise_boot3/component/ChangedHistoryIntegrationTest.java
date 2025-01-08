@@ -16,6 +16,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import dev.ohhoonim.excercise_boot3.component.changedHistory.ChangedHistoryService;
+import dev.ohhoonim.excercise_boot3.component.changedHistory.ChangedHistory;
 import dev.ohhoonim.excercise_boot3.component.changedHistory.ChangedHistory.Classify;
 import dev.ohhoonim.excercise_boot3.component.changedHistory.ChangedHistory.SearchCondition;
 import dev.ohhoonim.excercise_boot3.component.dataBy.DataBy;
